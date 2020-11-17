@@ -3,3 +3,9 @@
     <%= f.text_area :text, size: "40x8" %>
     <%= f.submit "Add Task" %>
 <% end %>
+
+<% @tasks.each do |t| %>
+  <%= t.title %>
+  <%= t.text %>
+<% end %>
+
