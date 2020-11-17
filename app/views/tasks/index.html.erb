@@ -1,11 +1,16 @@
+<h1>Менеджер задач</h1>
+
 <%= form_for @task do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :text, size: "40x8" %>
-    <%= f.submit "Add Task" %>
+    <%= f.text_field :title %><br>
+    <%= f.text_area :text, size: "40x8" %><br>
+    <%= f.submit "Добавить задачу" %>
 <% end %>
 
 <% @tasks.each do |t| %>
-  <%= t.title %>
-  <%= t.text %>
+  <b><%= t.title %></b><br>
+  <p><%= t.text %> <%= link_to 'Удалить', task_path(t),
+                      method: :delete,
+                      data: {confirm: 'Вы уверены?' } %></p>
+  <%= link_to 'Редактировать', edit_task_path(t) %>
 <% end %>
 
