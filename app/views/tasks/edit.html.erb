@@ -1,0 +1,21 @@
+<h1>Редактирование</h1>
+
+<%= form_for @task do |f| %>
+
+  <p>
+    <%= f.label :title, "Название" %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :title, "Описание" %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.submit "Сохранить" %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Назад', root_path %>
