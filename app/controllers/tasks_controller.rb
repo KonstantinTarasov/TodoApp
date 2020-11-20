@@ -4,6 +4,10 @@ class TasksController < ApplicationController
     @tasks = Task.all.order(creted_at: :desc)
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
   def create
     @task  = Task.new(tasks_params)
     if @task.save
@@ -12,6 +16,8 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
   end
+
+
 
   def destroy
     @task = Task.find(params(:id))
