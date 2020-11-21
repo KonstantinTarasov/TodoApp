@@ -34,6 +34,18 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  def done
+    @task = Task.find(params[:id])
+
+    if(@task)
+      @task.status = "true"
+
+      redirect_to root_path if @task.save
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def tasks_params
