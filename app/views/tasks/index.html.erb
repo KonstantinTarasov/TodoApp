@@ -1,3 +1,4 @@
+
 <h1>Менеджер задач</h1>
 
 <%= form_for @task do |f| %>
@@ -14,3 +15,37 @@
   <%= link_to 'Редактировать', edit_task_path(t) %>
 <% end %>
 
+<% @tasks.each do |t| %>
+  <div class="row">
+    <div class="card card-success">
+      <div class="card-body">
+        <div class="col-md-8">
+          <b><%= t.title %></b><br>
+          <p><%= t.text %></p>
+          <% if t.status %>
+            <p>
+              <strong>Задание выполнено</strong>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-right">
+            <% unless t.status %>
+              <%= link_to done_task_path(t.id), method: :patch do %>
+                <span class="fa fa-check" aria-hidden="true"></span>
+              <% end %>
+            <% end %>
+            <%= link_to edit_task_path(t) do %>
+              <span class="fa fa-edit" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to task_path(t), method: :delete, data: { confirm: 'Вы уверены?'} do %>
+              <span class="fa fa-trash" aria-hidden="true"></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
