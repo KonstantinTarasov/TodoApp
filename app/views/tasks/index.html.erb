@@ -1,13 +1,25 @@
 
-<h1>Менеджер задач</h1>
+<h1 class="text-center">Менеджер задач</h1>
 
-<%= form_for @task do |f| %>
-  <%= f.label :text, 'Задача' %><br>
-  <%= f.text_field :title, size: "40" %><br>
-  <%= f.label :text, 'Текст задачи', class: 'mt-2' %><br>
-  <%= f.text_area :text, size: "40x8" %><br>
-  <%= f.submit "Добавить задачу", class: 'btn btn-success mb-2' %>
-<% end %>
+<div class="row">
+  <div class="col-6">
+    <%= form_for @task do |f| %>
+      <%= f.label :text, 'Задача' %><br>
+      <%= f.text_field :title, size: "40" %><br>
+      <%= f.label :text, 'Текст задачи', class: 'mt-2' %><br>
+      <%= f.text_area :text, size: "40x8" %><br>
+      <%= f.submit "Добавить задачу", class: 'btn btn-success mb-2' %>
+    <% end %>
+  </div>
+
+  <div class="col-6">
+    <p class="text-center">Календарь</p>
+    <form>
+      <p>Выберите дату: <input type="date" name="calendar">
+        <input type="submit" value="Отправить"></p>
+    </form>
+  </div>
+</div>
 
 <% @tasks.each do |t| %>
   <div class="row">
