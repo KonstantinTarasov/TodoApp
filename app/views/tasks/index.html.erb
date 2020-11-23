@@ -7,18 +7,12 @@
     <%= f.submit "Добавить задачу" %>
 <% end %>
 
-<% @tasks.each do |t| %>
-  <b><%= t.title %></b><br>
-  <p><%= t.text %> <%= link_to 'Удалить', task_path(t),
-                      method: :delete,
-                      data: {confirm: 'Вы уверены?' } %></p>
-  <%= link_to 'Редактировать', edit_task_path(t) %>
-<% end %>
+
 
 <% @tasks.each do |t| %>
   <div class="row">
-    <div class="card card-success">
-      <div class="card-body">
+    <div class="card card-body">
+      <div class="card-columns">
         <div class="col-md-8">
           <b><%= t.title %></b><br>
           <p><%= t.text %></p>
@@ -30,7 +24,7 @@
         </div>
 
         <div class="col-md-4">
-          <p class="text-right">
+          <p class="text">
             <% unless t.status %>
               <%= link_to done_task_path(t.id), method: :patch do %>
                 <span class="fa fa-check" aria-hidden="true"></span>
